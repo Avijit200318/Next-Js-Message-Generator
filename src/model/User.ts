@@ -8,7 +8,7 @@ export interface IUser extends Document{
     password: string,
     verifyCode: string,
     verifyCodeExpiry: Date,
-    isAcceptingMessage: boolean,
+    isAcceptingMessages: boolean,
     isVerified: boolean,
     messages: Types.ObjectId[] | IMessage[];
 };
@@ -43,7 +43,7 @@ const userSchema = new Schema<IUser>({
         type: Boolean,
         default: false
     },
-    isAcceptingMessage: {
+    isAcceptingMessages: {
         type: Boolean,
         default: true
     },
