@@ -10,7 +10,7 @@ export interface IUser extends Document{
     verifyCodeExpiry: Date,
     isAcceptingMessages: boolean,
     isVerified: boolean,
-    messages: Types.ObjectId[] | IMessage[];
+    messages: Types.ObjectId[] | IMessage[]
 };
 
 const userSchema = new Schema<IUser>({
