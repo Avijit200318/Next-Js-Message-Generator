@@ -40,3 +40,27 @@ Send a JSON object with the following fields:
     "message": "User registered successfully. Please verifyyouremail"
 }
 ```
+## Endpoint: `/api/auth/check-username-unique?username=xyz`
+
+### Description
+This endpoint is used to check whether a given username is unique. It accepts a query parameter username and verifies if the username already exists in the database for a verified user. Username must not contain unique charecters(@, #, $, etc).
+
+### Method
+`GET`
+
+### Query Parameters
+- `username:`A unique string (required)
+
+### Example Request
+```json
+/api/auth/check-username-unique?username=delete100
+
+```
+#### Example Response
+```json
+{
+  "success": true,
+  "message": "Username is unique"
+}
+
+```
