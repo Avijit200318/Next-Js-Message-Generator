@@ -64,3 +64,32 @@ This endpoint is used to check whether a given username is unique. It accepts a 
 }
 
 ```
+## Endpoint: `/api/auth/verify-code`
+
+### Description
+This endpoint is used to verify a user's email using a verification code. It checks whether the provided code matches the stored code and is not expired, then marks the user as verified.
+
+### Method
+`POST`
+
+### Request Body
+
+Send a JSON object with the following fields:
+
+- `username`: A unique string (required)
+- `code`:  A string containing the 6-digit verification code sent to the user's email (required)
+
+### Example Request
+```json
+{
+  "username": "avijit_user",
+  "code": "123456"
+}
+```
+#### Example Response
+```json
+{
+  "success": true,
+  "message": "Account verified successfully"
+}
+```
