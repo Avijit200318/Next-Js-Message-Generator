@@ -26,6 +26,20 @@ export async function POST(req:NextRequest) {
         }, {status: 404});
         }
 
+        // zod validation
+        
+        const result = verifyCodeQuerySchema.safeParse({
+            verifyCode: code
+        });
+        if(!result.success){
+            const verifycodeError = result.error.format().verifyCode?._errors || [];
+
+            return NextResponse.json({
+            success: false,
+            message: verifycodeError?.length > 0 ? verifycodeError.join(', ') : 'Invalid query parameters'
+            }, {status: 400});
+        }
+
         const isCodeValid = user.verifyCode === code;
         const isCodeNotExpired = new Date(user.verifyCodeExpiry) > new Date();
 
