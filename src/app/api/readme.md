@@ -93,3 +93,112 @@ Send a JSON object with the following fields:
   "message": "Account verified successfully"
 }
 ```
+## Endpoint: `/api/accept-messages`
+
+### Description
+This endpoint updates the message acceptance preference (isAcceptingMessages) for the authenticated user.
+
+### Method
+`POST`
+
+### Request Body
+
+Send a JSON object with the following fields:
+
+- `acceptMessages:` A boolean indicating whether the user wants to receive messages (required)
+
+### Example Request
+```json
+{
+    "isAcceptingMessages": true
+}
+```
+#### Example Response
+```json
+{
+  "success": true,
+  "message": "Message acceptance status updated successfully",
+  "updatedUser": {
+    "_id": "user_id_here",
+    "username": "example_user",
+    "isAcceptingMessages": true,
+    ...
+  }
+}
+```
+## Endpoint: `/api/accept-messages`
+
+### Description
+This endpoint retrieves the current user's message acceptance status (isAcceptingMessages). It requires the user to be authenticated via session.
+
+### Method
+`GET`
+
+### Example Request
+No body required.
+
+#### Example Response
+```json
+{
+  "success": true,
+  "isAcceptingMessages": true
+}
+```
+## Endpoint: `/api/sned-message`
+
+### Description
+This endpoint allows anyone (unauthenticated) to send a message to a user if the user is accepting messages. The message is stored in the database and linked to the recipient user's account.
+
+### Method
+`POST`
+
+### Request Body
+
+Send a JSON object with the following fields:
+
+- `username`: A unique string (required)
+- `content:` A string containing the message text (required)
+
+### Example Request
+```json
+{
+  "username": "avijit_user",
+  "content": "Hello! I love your work."
+}
+```
+
+#### Example Response
+```json
+{
+  "success": true,
+  "message": "Message send successfully"
+}
+```
+## Endpoint: `/api/get-messages`
+
+### Description
+This endpoint retrieves all messages sent to the authenticated user. The messages are returned in descending order of their creation time (newest first). The user must be logged in to access this route.
+
+### Method
+`GET`
+
+### Authentication
+- `✅ Required:` Uses NextAuth session. The request must be made by an authenticated user.
+
+### Example Request
+(No request body required)
+Use a GET request with credentials (e.g., session cookie or token handled by NextAuth).
+
+#### Example Response
+```json
+{
+  "success": true,
+  "messages": [
+    {
+      "_id": "64fd7b3f9fa0d1c3bca1c91e",
+      "content": "Hey, just wanted to say I love your blog!",
+      "createdAt": "2025-07-29T12:34:56.789Z"
+    }
+  ]
+}
+```
