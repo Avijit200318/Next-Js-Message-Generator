@@ -219,9 +219,6 @@ No request body required
 ```json
 {
   "success":true,
-  "questions":"What's the most interesting fact you've learned recently?||
-    If  you could instantly gain one talent or skill, what would it be?||
-    What's a small, everyday thing that consistently brings a smile to your 
-    face?"
+  "questions":"What's the most interesting fact you've learned recently?|| If  you could instantly gain one talent or skill, what would it be?|| What's a small, everyday thing that consistently brings a smile to your face?"
 }
 ```

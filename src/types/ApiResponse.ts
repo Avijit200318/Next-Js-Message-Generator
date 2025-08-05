@@ -1,8 +1,8 @@
-import { IMessage } from "@/model/Message"
+import mongoose from "mongoose"
 
 export interface ApiResponse{
     success: boolean,
     message: string,
     isAcceptingMessages?: boolean,
-    messages?: Array<IMessage>
+    messages?: Array<mongoose.Types.ObjectId>
 }
