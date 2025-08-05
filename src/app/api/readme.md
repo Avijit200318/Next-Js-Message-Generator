@@ -202,3 +202,26 @@ Use a GET request with credentials (e.g., session cookie or token handled by Nex
   ]
 }
 ```
+## Endpoint: `/api/suggest-messages`
+
+### Description
+This endpoint generates three open-ended, engaging questions using the Gemini 2.5 Flash model from Google Generative AI. These questions are intended for anonymous social platforms (like Qooh.me) to encourage friendly, universal, and curiosity-driven interactions.
+
+### Method
+`GET`
+
+### Authentication
+❌ Not Required
+
+### Example Request
+No request body required
+#### Example Response
+```json
+{
+  "success":true,
+  "questions":"What's the most interesting fact you've learned recently?||
+    If  you could instantly gain one talent or skill, what would it be?||
+    What's a small, everyday thing that consistently brings a smile to your 
+    face?"
+}
+```
