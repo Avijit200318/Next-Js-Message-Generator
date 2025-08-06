@@ -15,7 +15,7 @@ import { toast } from "sonner"
 import { useDebounceCallback } from 'usehooks-ts';
 import { signUpValidation } from '@/schemas/signUpSchema';
 import { ApiResponse } from '@/types/ApiResponse';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from "lucide-react"
@@ -79,14 +79,14 @@ export default function page() {
             
             if(res.data.success === false){
                 console.error("Sign up route error: ", res.data.message);
-                toast("Sign up route error");
+                toast.error("Sign up route error");
                 return;
             }
             router.replace(`/verify/${username}`);
         } catch (error) {
             console.error("Error in signup of user: ", error);
             // const errorMessage = error as AxiosError<ApiResponse>;
-            toast("Sign up failed");
+            toast.error("Sign up failed");
         } finally {
             setIsSubmitting(false);
         }
