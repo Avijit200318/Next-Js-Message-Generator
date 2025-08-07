@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
     const url = request.nextUrl;
 
     // if we have token and we are going this routes then redirect /dashboard
-    if(token && (url.pathname.startsWith('/sign-in') || url.pathname.startsWith('/sign-up') || url.pathname.startsWith('/verify') || url.pathname.startsWith('/'))){
+    if(token && (url.pathname.startsWith('/sign-in') || url.pathname.startsWith('/sign-up') || url.pathname.startsWith('/verify') || url.pathname === '/')){
         return NextResponse.redirect(new URL('/dashboard', request.url));
     }
 
@@ -21,6 +21,7 @@ export async function middleware(request: NextRequest) {
 }
  
 // add where we want our middleware will run ex /sign-in, ..., /dashboard/:path* -> all the routes with path /dashboard
+
 export const config = {
   matcher: [
     '/sign-in',

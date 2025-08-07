@@ -57,7 +57,7 @@ export default function page() {
 
       if (res?.ok && res?.url) {
         toast.success("Login Successfull");
-        router.replace("/dashboard");
+        router.replace('/dashboard');
       }
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
