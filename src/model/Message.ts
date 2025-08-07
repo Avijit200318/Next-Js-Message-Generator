@@ -4,6 +4,7 @@ import mongoose, {Schema, Document, model, models} from "mongoose";
 export interface IMessage extends Document{
     content: string,
     createdAt: Date
+    _id: mongoose.Types.ObjectId,
 };
 
 const messageSchema = new Schema<IMessage>({
