@@ -34,10 +34,8 @@ export async function GET(req: NextRequest) {
         //     {$group: {_id: '$_id', messages: {$push: '$messages'}}}
         // ])
 
-        const user = await userModel.findById(userId).populate({
-            path: "messages",
-            options: { sort: { createdAt: -1 } }  // sort by newest first
-        });
+        const user = await userModel.findById(userId)
+        .populate("messages");
 
         // if(!user || user.length === 0) condition not needed since now we will get null or a single document
         if(!user){
