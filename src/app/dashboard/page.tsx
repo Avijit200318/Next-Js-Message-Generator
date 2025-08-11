@@ -54,9 +54,9 @@ export default function page() {
       setIsSwitchLoading(false);
     }
   }, [setValue]);
-  // so when the value will change the useCallback will run
+  // // so when the value will change the useCallback will run
 
-  // refresh we are going to send and it is a boolean variable whose default value we set to false
+  // // refresh we are going to send and it is a boolean variable whose default value we set to false
   const fetchMessages = useCallback( async (refresh:boolean = false)=> {
     setIsSwitchLoading(true);
     setLoading(true);

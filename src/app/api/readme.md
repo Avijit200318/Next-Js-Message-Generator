@@ -222,3 +222,29 @@ No request body required
   "questions":"What's the most interesting fact you've learned recently?|| If  you could instantly gain one talent or skill, what would it be?|| What's a small, everyday thing that consistently brings a smile to your face?"
 }
 ```
+## Endpoint: `/api/delete-message/:messageId`
+
+### Description
+This endpoint deletes a specific message from the authenticated user's account. It removes the message from the user's messages array and deletes the message document from the database.
+
+### Method
+`DELETE`
+
+### Authentication
+✅ Required – User must be logged in via NextAuth.
+
+### URL Parameters
+- `messageId (string, required)` – The unique ID of the message to be deleted.
+### Example Request
+```json
+/api/delete-message/:messageId
+or
+/api/delete-message/68985981008facb3fcba47c5
+```
+#### Example Response
+```json
+{
+    "success": true,
+    "messages": "Message Deleted Successfully"
+}
+```
