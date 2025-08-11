@@ -24,6 +24,7 @@ export async function GET(req: NextRequest) {
     // now here is a common mistake during aggrigation pipeline if the user id is string then it return an error. and inside the session we convert the userId to string. so we have to convert it
 
     const userId = new mongoose.Types.ObjectId(user?._id);
+    // const userId = new mongoose.Types.ObjectId("689858fbcae5482b6469d99f");
 
     try{
         // mongodb pipeline -> since I change the structure thsi code not needed
@@ -34,8 +35,9 @@ export async function GET(req: NextRequest) {
         //     {$group: {_id: '$_id', messages: {$push: '$messages'}}}
         // ])
 
-        const user = await userModel.findById(userId)
-        .populate("messages");
+        // messages
+        const user = await userModel.findById(userId).populate("messages");
+        console.log("user: ", user);
 
         // if(!user || user.length === 0) condition not needed since now we will get null or a single document
         if(!user){
